@@ -1,0 +1,30 @@
+{
+    "name": "ttruong15/alexa-app",
+    "description": "Alexa custom skills app",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Tinh Truong",
+            "email": "tinh.truong15@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.9.1",
+        "mockery/mockery": "^1.4.4",
+        "phpunit/phpunit": "^9.5.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core/",
+            "Skills\\": "skills/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
