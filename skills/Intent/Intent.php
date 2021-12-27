@@ -20,7 +20,11 @@ abstract class Intent
 			$slotNameCamelCase = $this->wordToCamelCase($slot->name);
 			if(method_exists($this, $slotNameCamelCase)) {
 				$value = $slot->value ?? null;
-				$output[] = $this->{$slotNameCamelCase}($value);
+				$result = $this->{$slotNameCamelCase}($value);
+
+				if ($result !== null && $result instanceof Output) {
+					$output[] = $result;
+				}
 			}	
 		}
 
