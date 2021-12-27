@@ -62,7 +62,7 @@ class FishTank extends Intent
 			} else {
 				$ucValue = 'OFF';
 			}
-			shell_exec('/usr/bin/mosquitto_pub -h 192.168.1.10 -t home/fishtank/light -m "' . $ucValue . '"');
+			shell_exec(MOSQ_PUB_COMMAND . ' -h ' . MOSQ_HOST . ' -p ' . MOSQ_PORT . ' -t ' . LIGHT_TOPIC . ' -m "' . $ucValue . '"');
 			$outputSpeech = new OutputSpeech('PlainText', "Turn light $value");
 		}
 
@@ -76,6 +76,6 @@ class FishTank extends Intent
 	 */
 	private function feedFish(): void
 	{
-		shell_exec('/usr/bin/mosquitto_pub -h 192.168.1.10 -t home/fishtank/feedfish -m "ON"');
+		shell_exec(MOSQ_PUB_COMMAND . ' -h ' . MOSQ_HOST . ' -p ' . MOSQ_PORT . ' -t ' . FEED_FISH_TOPIC . ' -m "ON"');
 	}
 }
