@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Http;
+namespace Core\Http\Request;
 
 use Exception;
 
@@ -12,7 +12,7 @@ class Request {
 		self::$content = json_decode(file_get_contents("php://input"));
 
 		if (json_last_error() !== JSON_ERROR_NONE) {
-			throw new Exception("Error: " . json_last_error_msg(), json_last_error());
+			throw new Exception("invalidRequest");
 		}
 
 		self::validate();
