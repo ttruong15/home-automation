@@ -19,7 +19,7 @@ class FishTank extends Intent
 		$outputSpeech = null;
 		if ($value === 'feed') {
 			$this->feedFish();
-			$outputSpeech = new OutputSpeech('PlainText', 'Feed fish');
+			$outputSpeech = new OutputSpeech('PlainText', 'Feeding the fish');
 		}
 
 		return $outputSpeech;
@@ -40,7 +40,7 @@ class FishTank extends Intent
 				sleep(2);
 			}
 
-			$outputSpeech = new OutputSpeech('PlainText', "Feed fish $value time" . ($value > 1 ? 's' : ''));
+			$outputSpeech = new OutputSpeech('PlainText', "Feeding the fish $value time" . ($value > 1 ? 's' : ''));
 		}
 
 		return $outputSpeech;
@@ -63,7 +63,7 @@ class FishTank extends Intent
 				$ucValue = 'OFF';
 			}
 			shell_exec(MOSQ_PUB_COMMAND . ' -h ' . MOSQ_HOST . ' -p ' . MOSQ_PORT . ' -t ' . LIGHT_TOPIC . ' -m "' . $ucValue . '"');
-			$outputSpeech = new OutputSpeech('PlainText', "Turn light $value");
+			$outputSpeech = new OutputSpeech('PlainText', "Turning the light $value");
 		}
 
 		return $outputSpeech;
